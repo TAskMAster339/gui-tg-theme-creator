@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101318">
+    <title>Редактор тем Telegram</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        Редактор тем
+      </div>
+      <span class="platform">Telegram Desktop <span>7.4.1</span></span>
+    </header>
+    <main>
+      <div class="page-title">
+        <h1>Компоненты</h1>
+        <p>Выбери состояние, чтобы увидеть его цвет и ключ палитры.</p>
+      </div>
+
+      <article aria-labelledby="component-title">
+        <header class="component-header">
+          <p>Список чатов</p>
+          <h2 id="component-title">Точка непрочитанного</h2>
+        </header>
+        <div class="columns">
+          <section class="properties" aria-labelledby="properties-title">
+            <h3 id="properties-title">Свойства</h3>
+            <label for="state">Состояние чата</label>
+            <select id="state">
+              <option value="normal">Обычный</option>
+              <option value="hover">При наведении</option>
+              <option value="active">Открытый</option>
+              <option value="muted">Заглушённый</option>
+              <option value="muted-hover">Заглушённый при наведении</option>
+              <option value="muted-active">Открытый заглушённый</option>
+            </select>
+            <dl class="color-property">
+              <div class="color-detail">
+                <dt>Цвет точки</dt>
+                <dd id="color-key"></dd>
+              </div>
+              <div class="color-value">
+                <span id="swatch" aria-hidden="true"></span>
+                <dd id="color-value"></dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="preview" aria-labelledby="preview-title">
+            <h3 id="preview-title">Предпросмотр</h3>
+            <div class="preview-frame">
+              <div class="chat-window">
+                <div class="chat-header"><span class="menu-icon" aria-hidden="true"></span>Чаты</div>
+                <div class="chat-row" id="chat-row">
+                  <div class="avatar" aria-hidden="true">С</div>
+                  <div class="chat-text">
+                    <strong>Студия</strong>
+                    <span>Отправил новую версию</span>
+                  </div>
+                  <div class="chat-meta">
+                    <time datetime="12:48">12:48</time>
+                    <span id="unread-dot" role="img" aria-label="Непрочитано"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
