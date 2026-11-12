@@ -103,8 +103,6 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 .menu-icon { width: 15px; height: 10px; border-block: 2px solid #64758a; }
 .chat-row { display: flex; align-items: center; gap: 11px; padding: 13px 15px; }
-.chat-row[data-state$="hover"] { background: #eef3f8; }
-.chat-row[data-state$="active"] { background: #4593d1; color: #fff; }
 .avatar {
   flex: 0 0 40px;
   height: 40px;
@@ -118,8 +116,8 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .chat-text { flex: 1; min-width: 0; }
 .chat-text span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chat-text span, .chat-meta { font-size: .76rem; color: #56677c; }
-.chat-row[data-state$="active"] .chat-text span,
-.chat-row[data-state$="active"] .chat-meta { color: #fff; }
+.chat-text span { color: var(--message-color); }
+.chat-meta { color: var(--time-color); }
 .chat-meta { display: grid; justify-items: end; gap: 7px; }
 #unread-dot { width: 9px; height: 9px; border-radius: 50%; }
 
@@ -127,4 +125,27 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .columns { grid-template-columns: 1fr; }
   .properties { border-right: 0; border-bottom: 1px solid var(--border); }
   .properties, .preview, .component-header { padding: 19px; }
+}
+
+
+.theme-controls { margin-bottom: 22px; }
+.theme-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.theme-actions label { margin: 0; }
+.theme-actions input { max-width: 100%; }
+.theme-actions button, .theme-actions input::file-selector-button {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #202936;
+  color: inherit;
+  font: inherit;
+}
+.theme-actions button:disabled { opacity: .5; }
+#theme-status, #theme-details { margin-top: 10px; color: var(--muted); overflow-wrap: anywhere; }
+#theme-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 6px 12px;
+  margin-top: 8px;
+  font: .8rem ui-monospace, monospace;
 }

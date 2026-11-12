@@ -1,5 +1,7 @@
 import bindings from "../catalog/bindings.tsv?raw";
 import palette from "../catalog/palette.tsv?raw";
+import { Palette, readDefaults } from "./palette.ts";
+import { readTheme, type ImportedTheme } from "./theme.ts";
 import "./style.css";
 
 function getElement<T extends HTMLElement>(id: string): T {
@@ -10,12 +12,9 @@ function getElement<T extends HTMLElement>(id: string): T {
   return element as T;
 }
 
-const defaults = new Map(
-  palette.trimEnd().split("\n").slice(1).map((row) => {
-    const [key, , value] = row.split("\t");
-    return [key, value];
-  }),
-);
+const defaults = readDefaults(palette);
+const basePalette = new Palette(defaults);
+let activeTheme: ImportedTheme | undefined;
 
 const unreadDotKeys = new Map(
   bindings.trimEnd().split("\n").slice(1)
@@ -23,24 +22,6 @@ const unreadDotKeys = new Map(
     .filter(([, component, , property]) => component === "unread-dot" && property === "background")
     .map(([key, , state]) => [state, key]),
 );
-
-function resolveDefault(key: string): string {
-  const visited = new Set<string>();
-  while (!visited.has(key)) {
-    visited.add(key);
-    const declaration = defaults.get(key);
-    if (!declaration) {
-      break;
-    }
-    // The first branch is the stock color. The second is Telegram's fallback.
-    const value = declaration.split("|", 1)[0].trim();
-    if (value.startsWith("#")) {
-      return value.toUpperCase();
-    }
-    key = value;
-  }
-  throw new Error(`Unresolved default color: ${key}`);
-}
 
 const state = getElement<HTMLSelectElement>("state");
 const chatRow = getElement("chat-row");
@@ -54,8 +35,13 @@ function updatePreview() {
   if (!key) {
     throw new Error(`Missing unread-dot binding: ${state.value}`);
   }
-  const color = resolveDefault(key);
-  chatRow.dataset.state = state.value;
+  const colors = activeTheme?.palette ?? basePalette;
+  const color = colors.color(key);
+  const suffix = state.value.endsWith("active") ? "Active" : state.value.endsWith("hover") ? "Over" : "";
+  chatRow.style.backgroundColor = colors.color(`dialogsBg${suffix}`);
+  chatRow.style.color = colors.color(`dialogsNameFg${suffix}`);
+  chatRow.style.setProperty("--message-color", colors.color(`dialogsTextFg${suffix}`));
+  chatRow.style.setProperty("--time-color", colors.color(`dialogsDateFg${suffix}`));
   colorKey.textContent = key;
   colorValue.textContent = color;
   swatch.style.backgroundColor = color;
@@ -64,3 +50,57 @@ function updatePreview() {
 
 state.addEventListener("change", updatePreview);
 updatePreview();
+
+const fileInput = getElement<HTMLInputElement>("theme-file");
+const resetTheme = getElement<HTMLButtonElement>("reset-theme");
+const themeStatus = getElement("theme-status");
+const themeDetails = getElement<HTMLDetailsElement>("theme-details");
+const themeFields = getElement("theme-fields");
+
+function showThemeFields() {
+  themeFields.replaceChildren();
+  const extras = new Map(
+    [...(activeTheme?.palette.fields ?? [])].filter(([key]) => !defaults.has(key)),
+  );
+  if (activeTheme?.wallpaper) {
+    extras.set("Файл обоев", activeTheme.wallpaper.name);
+  }
+  for (const [key, value] of extras) {
+    const term = document.createElement("dt");
+    const description = document.createElement("dd");
+    term.textContent = key;
+    description.textContent = value;
+    themeFields.append(term, description);
+  }
+  themeDetails.hidden = !extras.size;
+}
+
+fileInput.addEventListener("change", async () => {
+  const file = fileInput.files?.[0];
+  if (!file) {
+    return;
+  }
+  fileInput.disabled = true;
+  resetTheme.disabled = true;
+  themeStatus.textContent = "Читаем файл темы…";
+  try {
+    activeTheme = await readTheme(file, defaults);
+    updatePreview();
+    showThemeFields();
+    themeStatus.textContent = `Открыта тема «${file.name}».`;
+  } catch (error) {
+    themeStatus.textContent = error instanceof Error ? error.message : "Не удалось открыть тему.";
+  } finally {
+    fileInput.value = "";
+    fileInput.disabled = false;
+    resetTheme.disabled = !activeTheme;
+  }
+});
+
+resetTheme.addEventListener("click", () => {
+  activeTheme = undefined;
+  resetTheme.disabled = true;
+  themeStatus.textContent = "Используется базовая палитра Telegram Desktop.";
+  updatePreview();
+  showThemeFields();
+});

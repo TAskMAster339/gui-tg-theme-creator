@@ -20,6 +20,19 @@
         <p>Выбери состояние, чтобы увидеть его цвет и ключ палитры.</p>
       </div>
 
+      <section class="theme-controls" aria-label="Тема">
+        <div class="theme-actions">
+          <label for="theme-file">Открыть тему</label>
+          <input type="file" id="theme-file" accept=".tdesktop-theme,.tdesktop-palette,.zip,.txt">
+          <button type="button" id="reset-theme" disabled>Базовая палитра</button>
+        </div>
+        <p id="theme-status" role="status">Используется базовая палитра Telegram Desktop.</p>
+        <details id="theme-details" hidden>
+          <summary>Дополнительные поля и обои</summary>
+          <dl id="theme-fields"></dl>
+        </details>
+      </section>
+
       <article aria-labelledby="component-title">
         <header class="component-header">
           <p>Список чатов</p>
