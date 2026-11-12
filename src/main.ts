@@ -274,6 +274,7 @@ const paletteCatalog = getElement<HTMLDetailsElement>("palette-catalog");
 const catalogEditor = getElement("catalog-editor");
 const catalogColor = getElement("catalog-color");
 const catalogRestore = getElement<HTMLButtonElement>("catalog-restore");
+const catalogSwatches = new Map<string, HTMLElement>();
 let catalogSelection: (ReturnType<typeof createColorInputs> & { key: string }) | undefined;
 
 function purpose(key: string): string {
@@ -283,6 +284,11 @@ function purpose(key: string): string {
 }
 
 function updateCatalogEditor() {
+  for (const [key, swatch] of catalogSwatches) {
+    const color = currentPalette.color(key);
+    swatch.style.setProperty("--swatch-color", color);
+    swatch.title = color;
+  }
   if (!catalogSelection) {
     return;
   }
@@ -330,6 +336,11 @@ paletteCatalog.addEventListener("toggle", () => {
     button.className = "catalog-key-button";
     button.textContent = key;
     button.addEventListener("click", () => selectCatalogKey(key));
+    const swatch = document.createElement("span");
+    swatch.className = "catalog-key-swatch";
+    swatch.setAttribute("aria-hidden", "true");
+    button.append(swatch);
+    catalogSwatches.set(key, swatch);
     term.append(button);
     const description = document.createElement("dd");
     const matches = catalogBindings.filter((binding) => binding.key === key);
@@ -357,6 +368,7 @@ paletteCatalog.addEventListener("toggle", () => {
     detail.textContent = description;
     list.append(term, detail);
   }
+  updateCatalogEditor();
   filterSearch();
 });
 

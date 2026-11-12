@@ -229,5 +229,21 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   padding: 3px 6px;
   font: inherit;
 }
-.catalog-key-button { color: var(--accent); overflow-wrap: anywhere; text-align: left; }
+.catalog-key-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.catalog-key-swatch {
+  flex: 0 0 12px;
+  height: 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: linear-gradient(var(--swatch-color), var(--swatch-color)),
+    repeating-conic-gradient(#ddd 0% 25%, #888 0% 50%) 0 / 6px 6px;
+}
 #catalog-restore:disabled { opacity: .5; }
