@@ -52,6 +52,15 @@ export class Palette {
     }
   }
 
+  withColor(key: string, value: string): Palette {
+    if (!this.defaults.has(key) || !hexColor.test(value)) {
+      throw new Error("Введите цвет в формате #RRGGBB или #RRGGBBAA.");
+    }
+    const fields = new Map(this.fields);
+    fields.set(key, value.toUpperCase());
+    return new Palette(this.defaults, fields);
+  }
+
   color(key: string): string {
     const path = new Set<string>();
     let current = key;

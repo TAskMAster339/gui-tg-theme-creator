@@ -17,7 +17,7 @@
     <main>
       <div class="page-title">
         <h1>Компоненты</h1>
-        <p>Выбери состояние, чтобы увидеть его цвет и ключ палитры.</p>
+        <p>Нажми на элемент предпросмотра, чтобы выбрать его цвет.</p>
       </div>
 
       <section class="theme-controls" aria-label="Тема">
@@ -33,7 +33,12 @@
         </details>
       </section>
 
-      <article aria-labelledby="component-title">
+      <div class="component-search">
+        <label for="component-search">Поиск по компонентам и ключам</label>
+        <input id="component-search" type="search" placeholder="Например, комментарии или boxBg">
+        <p id="no-components" role="status" hidden>Подходящих компонентов нет. Другие ключи можно найти в каталоге.</p>
+      </div>
+      <article class="component-example" data-component="unread-dot" aria-labelledby="component-title">
         <header class="component-header">
           <p>Список чатов</p>
           <h2 id="component-title">Точка непрочитанного</h2>
@@ -50,16 +55,7 @@
               <option value="muted-hover">Заглушённый при наведении</option>
               <option value="muted-active">Открытый заглушённый</option>
             </select>
-            <dl class="color-property">
-              <div class="color-detail">
-                <dt>Цвет точки</dt>
-                <dd id="color-key"></dd>
-              </div>
-              <div class="color-value">
-                <span id="swatch" aria-hidden="true"></span>
-                <dd id="color-value"></dd>
-              </div>
-            </dl>
+            <dl class="binding-properties"></dl>
           </section>
 
           <section class="preview" aria-labelledby="preview-title">
@@ -75,7 +71,7 @@
                   </div>
                   <div class="chat-meta">
                     <time datetime="12:48">12:48</time>
-                    <span id="unread-dot" role="img" aria-label="Непрочитано"></span>
+                    <span id="unread-dot" data-property="background"></span>
                   </div>
                 </div>
               </div>
@@ -96,7 +92,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="scene-row"><strong>Студия</strong><span class="badge">12</span></div></div>
+            <div class="preview-frame"><div class="scene-row"><strong>Студия</strong><span class="badge" data-property="background"><span data-property="foreground">12</span></span></div></div>
           </section>
         </div>
       </article>
@@ -112,7 +108,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="message-example"><div class="quote"><strong>Маша</strong><br>Когда будет встреча?</div><p>Завтра в 10:00.</p></div></div>
+            <div class="preview-frame"><div class="message-example" data-property="background"><div class="quote" data-property="stripe"><strong>Маша</strong><br>Когда будет встреча?</div><p data-property="text">Завтра в 10:00.</p></div></div>
           </section>
         </div>
       </article>
@@ -128,7 +124,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="message-example"><p>Опубликовали программу встречи.</p><div class="comment-label">3 комментария <span class="comment-dot" role="img" aria-label="Есть непрочитанные"></span></div></div></div>
+            <div class="preview-frame"><div class="message-example" data-property="background"><p data-property="text">Опубликовали программу встречи.</p><div class="comment-label"><span data-property="foreground">3 комментария</span> <span class="comment-dot" data-property="indicator"></span></div></div></div>
           </section>
         </div>
       </article>
@@ -144,7 +140,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="menu-item">Копировать текст</div></div>
+            <div class="preview-frame"><div class="menu-item" data-property="background"><span data-property="foreground">Копировать текст</span></div></div>
           </section>
         </div>
       </article>
@@ -160,7 +156,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="toast-example">Ссылка скопирована</div></div>
+            <div class="preview-frame"><div class="toast-example" data-property="background"><span data-property="foreground">Ссылка скопирована</span></div></div>
           </section>
         </div>
       </article>
@@ -176,7 +172,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="settings-example"><p>Основные настройки</p><div class="settings-divider"></div><p>Уведомления и звуки</p></div></div>
+            <div class="preview-frame"><div class="settings-example"><p>Основные настройки</p><div class="settings-divider" data-property="background"></div><p>Уведомления и звуки</p></div></div>
           </section>
         </div>
       </article>
@@ -192,7 +188,7 @@
           </section>
           <section class="preview">
             <h3>Предпросмотр</h3>
-            <div class="preview-frame"><div class="profile-example"><strong>Студия</strong><span class="profile-action">Вступить</span></div></div>
+            <div class="preview-frame"><div class="profile-example"><strong>Студия</strong><span class="profile-action" data-property="background">Вступить</span></div></div>
           </section>
         </div>
       </article>

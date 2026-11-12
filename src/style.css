@@ -60,22 +60,6 @@ select {
   border-radius: 8px;
 }
 select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.color-property {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-top: 22px;
-  padding-top: 17px;
-  border-top: 1px solid var(--border);
-}
-.color-detail { min-width: 0; }
-.color-detail dt { font-size: .86rem; margin-bottom: 5px; }
-.color-detail dd, .color-value dd { font: .78rem ui-monospace, monospace; overflow-wrap: anywhere; }
-.color-detail dd { color: var(--muted); }
-.color-value { display: flex; align-items: center; gap: 8px; }
-#swatch { width: 20px; height: 20px; border: 1px solid #ffffff40; border-radius: 5px; }
 .preview-frame {
   display: grid;
   place-items: center;
@@ -119,7 +103,7 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .chat-text span { color: var(--message-color); }
 .chat-meta { color: var(--time-color); }
 .chat-meta { display: grid; justify-items: end; gap: 7px; }
-#unread-dot { width: 9px; height: 9px; border-radius: 50%; }
+#unread-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--example-background); }
 
 @media (max-width: 640px) {
   .columns { grid-template-columns: 1fr; }
@@ -163,7 +147,6 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   overflow-wrap: anywhere;
 }
 .binding-properties a, .palette-catalog a { color: var(--accent); }
-.binding-swatch { width: 17px; height: 17px; border: 1px solid #ffffff50; border-radius: 4px; }
 .scene-row, .message-example, .menu-item, .settings-example, .profile-example {
   width: min(100%, 300px);
   border-radius: 10px;
@@ -208,3 +191,21 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .palette-catalog dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px; margin-top: 12px; }
 .palette-catalog dt, .palette-catalog dd { overflow-wrap: anywhere; font-size: .85rem; }
 .palette-catalog dt { font-family: ui-monospace, monospace; }
+
+.component-search { max-width: 480px; }
+.component-search p { margin-top: 8px; color: var(--muted); }
+.component-search input, .hex-input {
+  background: #202936;
+  color: inherit;
+  border: 1px solid #3a485a;
+  border-radius: 7px;
+  padding: 7px 9px;
+}
+.component-search input { width: 100%; font: inherit; }
+.hex-input { width: 12ch; font: inherit; }
+.binding-properties input[type="color"] { width: 30px; height: 30px; padding: 1px; cursor: pointer; }
+.binding-properties dd.selected-property { outline: 1px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.preview [data-property] { cursor: pointer; }
+.preview [data-property]:focus-visible { outline: 2px solid #507bb9; outline-offset: 3px; }
+#unread-dot, .comment-dot { position: relative; }
+#unread-dot::after, .comment-dot::after { content: ""; position: absolute; inset: -7px; }

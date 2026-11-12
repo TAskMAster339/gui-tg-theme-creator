@@ -16,15 +16,12 @@ function getElement<T extends HTMLElement>(id: string): T {
 const defaults = readDefaults(palette);
 const basePalette = new Palette(defaults);
 let activeTheme: ImportedTheme | undefined;
+let currentPalette = basePalette;
 
 const catalogBindings = bindings.trimEnd().split("\n").slice(1).map((row) => {
   const [key, component, state, property, description, source, implementation] = row.split("\t");
   return { key, component, state, property, description, source, implementation };
 });
-const unreadDotKeys = new Map(catalogBindings
-  .filter(({ component }) => component === "unread-dot")
-  .map(({ state, key }) => [state, key]));
-
 function sourceUrl(source: string): string {
   const [path, line] = source.split(":");
   const libPrefix = "Telegram/lib_ui/";
@@ -36,67 +33,134 @@ function sourceUrl(source: string): string {
 
 const state = getElement<HTMLSelectElement>("state");
 const chatRow = getElement("chat-row");
-const colorKey = getElement("color-key");
-const colorValue = getElement("color-value");
-const swatch = getElement("swatch");
-const unreadDot = getElement("unread-dot");
-
 const badgeState = getElement<HTMLSelectElement>("badge-state");
 for (const option of state.options) {
   badgeState.add(new Option(option.text, option.value));
 }
+
+interface ColorControl {
+  key: string;
+  label: HTMLElement;
+  value: HTMLElement;
+  picker: HTMLInputElement;
+  hex: HTMLInputElement;
+}
+
 const examples = [...document.querySelectorAll<HTMLElement>(".component-example")].map((card) => ({
   card,
   properties: card.querySelector<HTMLDListElement>(".binding-properties")!,
+  targets: [...card.querySelectorAll<HTMLElement>("[data-property]")],
+  state: card.querySelector("select"),
   bindings: catalogBindings.filter(({ component }) => component === card.dataset.component),
+  controls: new Map<string, ColorControl>(),
 }));
 
-function updateExamples(colors: Palette) {
+function updatePreview() {
+  const suffix = state.value.endsWith("active") ? "Active" : state.value.endsWith("hover") ? "Over" : "";
+  chatRow.style.backgroundColor = currentPalette.color(`dialogsBg${suffix}`);
+  chatRow.style.color = currentPalette.color(`dialogsNameFg${suffix}`);
+  chatRow.style.setProperty("--message-color", currentPalette.color(`dialogsTextFg${suffix}`));
+  chatRow.style.setProperty("--time-color", currentPalette.color(`dialogsDateFg${suffix}`));
   for (const example of examples) {
-    const selected = example.card.dataset.component === "unread-badge" ? badgeState.value : "normal";
-    example.properties.replaceChildren();
-    for (const binding of example.bindings.filter(({ state }) => state === selected)) {
-      const color = colors.color(binding.key);
-      example.card.style.setProperty(`--example-${binding.property}`, color);
-      const label = document.createElement("dt");
-      label.textContent = binding.description;
-      const value = document.createElement("dd");
-      const swatch = document.createElement("span");
-      swatch.className = "binding-swatch";
-      swatch.style.backgroundColor = color;
-      swatch.setAttribute("aria-hidden", "true");
-      const link = document.createElement("a");
-      link.href = sourceUrl(binding.source);
-      link.textContent = binding.key;
-      link.target = "_blank";
-      link.rel = "noopener";
-      value.append(swatch, link, document.createTextNode(color));
-      example.properties.append(label, value);
+    for (const [property, control] of example.controls) {
+      const color = currentPalette.color(control.key);
+      example.card.style.setProperty(`--example-${property}`, color);
+      control.picker.value = color.slice(0, 7);
+      control.hex.value = color;
+      control.hex.setCustomValidity("");
     }
   }
 }
 
-function updatePreview() {
-  const key = unreadDotKeys.get(state.value);
-  if (!key) {
-    throw new Error(`Missing unread-dot binding: ${state.value}`);
-  }
-  const colors = activeTheme?.palette ?? basePalette;
-  const color = colors.color(key);
-  const suffix = state.value.endsWith("active") ? "Active" : state.value.endsWith("hover") ? "Over" : "";
-  chatRow.style.backgroundColor = colors.color(`dialogsBg${suffix}`);
-  chatRow.style.color = colors.color(`dialogsNameFg${suffix}`);
-  chatRow.style.setProperty("--message-color", colors.color(`dialogsTextFg${suffix}`));
-  chatRow.style.setProperty("--time-color", colors.color(`dialogsDateFg${suffix}`));
-  colorKey.textContent = key;
-  colorValue.textContent = color;
-  swatch.style.backgroundColor = color;
-  unreadDot.style.backgroundColor = color;
-  updateExamples(colors);
+function applyColor(key: string, value: string) {
+  currentPalette = currentPalette.withColor(key, value);
+  getElement<HTMLButtonElement>("reset-theme").disabled = false;
+  updatePreview();
 }
 
-state.addEventListener("change", updatePreview);
-badgeState.addEventListener("change", updatePreview);
+function renderControls(example: typeof examples[number]) {
+  example.controls.clear();
+  example.properties.replaceChildren();
+  const selected = example.state?.value ?? "normal";
+  for (const binding of example.bindings.filter(({ state }) => state === selected)) {
+    const label = document.createElement("dt");
+    label.textContent = binding.description;
+    const value = document.createElement("dd");
+    const link = document.createElement("a");
+    link.href = sourceUrl(binding.source);
+    link.textContent = binding.key;
+    link.target = "_blank";
+    link.rel = "noopener";
+    const picker = document.createElement("input");
+    picker.type = "color";
+    picker.setAttribute("aria-label", `Палитра — ${binding.description}`);
+    const hex = document.createElement("input");
+    hex.type = "text";
+    hex.className = "hex-input";
+    hex.maxLength = 9;
+    hex.spellcheck = false;
+    hex.setAttribute("aria-label", `HEX — ${binding.description}`);
+    picker.addEventListener("input", () => {
+      const alpha = currentPalette.color(binding.key).slice(7);
+      applyColor(binding.key, picker.value + alpha);
+    });
+    const commitHex = () => {
+      try {
+        applyColor(binding.key, hex.value.trim());
+      } catch (error) {
+        hex.setCustomValidity(error instanceof Error ? error.message : "Некорректный цвет.");
+        hex.reportValidity();
+      }
+    };
+    hex.addEventListener("input", () => hex.setCustomValidity(""));
+    hex.addEventListener("change", commitHex);
+    hex.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        commitHex();
+      }
+    });
+    value.append(link, picker, hex);
+    example.properties.append(label, value);
+    example.controls.set(binding.property, { key: binding.key, label, value, picker, hex });
+  }
+  for (const target of example.targets) {
+    const control = example.controls.get(target.dataset.property ?? "");
+    if (control) {
+      target.setAttribute("aria-label", control.label.textContent ?? "");
+    }
+  }
+}
+
+for (const example of examples) {
+  renderControls(example);
+  example.state?.addEventListener("change", () => {
+    renderControls(example);
+    updatePreview();
+  });
+  for (const target of example.targets) {
+    target.tabIndex = 0;
+    target.setAttribute("role", "button");
+    const selectProperty = (event: Event) => {
+      const control = example.controls.get(target.dataset.property ?? "");
+      if (!control) {
+        return;
+      }
+      event.stopPropagation();
+      for (const item of example.controls.values()) {
+        item.value.classList.toggle("selected-property", item === control);
+      }
+      control.hex.focus();
+      control.hex.select();
+    };
+    target.addEventListener("click", selectProperty);
+    target.addEventListener("keydown", (event) => {
+      if (event.target === target && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        selectProperty(event);
+      }
+    });
+  }
+}
 updatePreview();
 
 const fileInput = getElement<HTMLInputElement>("theme-file");
@@ -133,6 +197,7 @@ fileInput.addEventListener("change", async () => {
   themeStatus.textContent = "Читаем файл темы…";
   try {
     activeTheme = await readTheme(file, defaults);
+    currentPalette = activeTheme.palette;
     updatePreview();
     showThemeFields();
     themeStatus.textContent = `Открыта тема «${file.name}».`;
@@ -141,12 +206,13 @@ fileInput.addEventListener("change", async () => {
   } finally {
     fileInput.value = "";
     fileInput.disabled = false;
-    resetTheme.disabled = !activeTheme;
+    resetTheme.disabled = currentPalette === basePalette;
   }
 });
 
 resetTheme.addEventListener("click", () => {
   activeTheme = undefined;
+  currentPalette = basePalette;
   resetTheme.disabled = true;
   themeStatus.textContent = "Используется базовая палитра Telegram Desktop.";
   updatePreview();
@@ -189,4 +255,29 @@ paletteCatalog.addEventListener("toggle", () => {
     detail.textContent = description;
     list.append(term, detail);
   }
+  filterSearch();
 });
+
+const search = getElement<HTMLInputElement>("component-search");
+
+function filterSearch() {
+  const query = search.value.trim().toLocaleLowerCase();
+  let visible = 0;
+  for (const example of examples) {
+    const title = example.card.querySelector(".component-header")?.textContent ?? "";
+    const matches = example.bindings.some(({ key, description }) =>
+      key.toLocaleLowerCase().includes(query) || description.toLocaleLowerCase().includes(query));
+    example.card.hidden = !title.toLocaleLowerCase().includes(query) && !matches;
+    if (!example.card.hidden) {
+      visible++;
+    }
+  }
+  getElement("no-components").hidden = visible !== 0;
+  for (const term of document.querySelectorAll<HTMLElement>("#catalog-keys dt")) {
+    const detail = term.nextElementSibling as HTMLElement;
+    const text = `${term.textContent} ${detail.textContent}`.toLocaleLowerCase();
+    term.hidden = detail.hidden = !text.includes(query);
+  }
+}
+
+search.addEventListener("input", filterSearch);
