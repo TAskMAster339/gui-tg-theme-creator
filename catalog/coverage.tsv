@@ -1,0 +1,587 @@
+key	task	comment
+windowBg	T012	white: fallback for background
+windowFg	T012	black: fallback for text
+windowBgOver	T012	light gray: fallback for background with mouse over
+windowBgRipple	T012	darker gray: fallback for ripple effect
+windowFgOver	T012	black: fallback for text with mouse over
+windowSubTextFg	T012	gray: fallback for additional text
+windowSubTextFgOver	T012	darker gray: fallback for additional text with mouse over
+windowBoldFg	T012	dark gray: fallback for bold text
+windowBoldFgOver	T012	dark gray: fallback for bold text with mouse over
+windowBgActive	T012	bright blue: fallback for blue filled active areas
+windowFgActive	T012	white: fallback for text on active areas
+windowActiveTextFg	T012	online blue: fallback for active text like online status
+windowShadowFg	T012	black: fallback for shadow
+windowShadowFgFallback	T012	gray: fallback for shadow without opacity
+shadowFg	T012	most shadows (including opacity)
+slideFadeOutBg	T012	slide animation (chat to profile) fade out filling
+slideFadeOutShadowFg	T012	slide animation (chat to profile) fade out right section shadow
+imageBg	T012	image background fallback (when photo size is less than minimum allowed)
+imageBgTransparent	T012	image background when displaying an image with opacity where no opacity is needed
+activeButtonBg	T012	default active button background
+activeButtonBgOver	T012	default active button background with mouse over
+activeButtonBgRipple	T012	default active button ripple effect
+activeButtonFg	T012	default active button text
+activeButtonFgOver	T012	default active button text with mouse over
+activeButtonSecondaryFg	T012	default active button additional text (selected messages counter in forward / delete buttons)
+activeButtonSecondaryFgOver	T012	default active button additional text with mouse over
+activeLineFg	T012	default active line (like code input field bottom border when you log in and field is focused)
+activeLineFgError	T012	default active line for error state (like code input field bottom border when you log in and you've entered incorrect code)
+lightButtonBg	T012	default light button background (like buttons in boxes)
+lightButtonBgOver	T012	default light button background with mouse over
+lightButtonBgRipple	T012	default light button ripple effect
+lightButtonFg	T012	default light button text
+lightButtonFgOver	T012	default light button text with mouse over
+attentionButtonFg	T012	default attention button text (like confirm button on log out)
+attentionButtonFgOver	T012	default attention button text with mouse over
+attentionButtonBgOver	T012	default attention button background with mouse over
+attentionButtonBgRipple	T012	default attention button ripple effect
+menuBg	T012	default popup menu background
+menuBgOver	T012	default popup menu item background with mouse over
+menuBgRipple	T012	default popup menu item ripple effect
+menuIconFg	T012	default popup menu item icon (like main menu)
+menuIconFgOver	T012	default popup menu item icon with mouse over
+menuSubmenuArrowFg	T012	default popup menu submenu arrow icon (like in message field context menu in case of RTL system language)
+menuFgDisabled	T012	default popup menu item disabled text (like unavailable items in message field context menu)
+menuSeparatorFg	T012	default popup menu separator (like in message field context menu)
+scrollBarBg	T012	default scroll bar current rectangle, the bar itself (like in chats list)
+scrollBarBgOver	T012	default scroll bar current rectangle with mouse over it
+scrollBg	T012	default scroll bar background
+scrollBgOver	T012	default scroll bar background with mouse over the scroll bar
+smallCloseIconFg	T012	small X icon (like in Show all sessions box to the right for sessions termination)
+smallCloseIconFgOver	T012	small X icon with mouse over
+radialFg	T012	default radial loader line (like in Media Viewer when loading a photo)
+radialBg	T012	default radial loader background (like in Media Viewer when loading a photo)
+placeholderFg	T012	default input field placeholder when field is not focused (like in phone input field when you log in)
+placeholderFgActive	T012	default input field placeholder when field is focused
+inputBorderFg	T012	default input field bottom border (like in code input field when you log in and field is not focused)
+filterInputBorderFg	T012	default rounded input field border (like in chats list search field when field is focused)
+filterInputActiveBg	T012	default rounded input field active background (like in chats list search field when field is focused)
+filterInputInactiveBg	T012	default rounded input field inactive background (like in chats list search field when field is inactive)
+checkboxFg	T012	default unchecked checkbox rounded rectangle
+botKbBg	T014	bot keyboard button background
+botKbDownBg	T014	bot keyboard button ripple effect
+botKbColor	T014	bot keyboard button text
+botKbPrimaryBg	T014	bot keyboard Primary button background
+botKbDangerBg	T014	bot keyboard Danger button background
+botKbSuccessBg	T014	bot keyboard Success button background
+botKbInlinePrimaryBg	T014	inline bot keyboard Primary button background
+botKbInlineDangerBg	T014	inline bot keyboard Danger button background
+botKbInlineSuccessBg	T014	inline bot keyboard Success button background
+sliderBgInactive	T012	default slider not active bar (like in Settings when you choose interface scale or custom notifications count)
+sliderBgActive	T012	default slider active bar (like in Settings when you choose interface scale or custom notifications count)
+tooltipBg	T012	tooltip background (like when you put mouse over the message timestamp and wait)
+tooltipFg	T012	tooltip text
+tooltipBorderFg	T012	tooltip border
+titleShadow	T017	one pixel line shadow at the bottom of custom window title
+titleBg	T017	custom window title background when window is inactive
+titleBgActive	T017	custom window title background when window is active
+titleButtonBg	T017	custom window title minimize/maximize/restore button background when window is inactive (Windows only)
+titleButtonFg	T017	custom window title minimize/maximize/restore button icon when window is inactive (Windows only)
+titleButtonBgOver	T017	custom window title minimize/maximize/restore button background with mouse over when window is inactive (Windows only)
+titleButtonFgOver	T017	custom window title minimize/maximize/restore button icon with mouse over when window is inactive (Windows only)
+titleButtonBgActive	T017	custom window title minimize/maximize/restore button background when window is active (Windows only)
+titleButtonFgActive	T017	custom window title minimize/maximize/restore button icon when window is active (Windows only)
+titleButtonBgActiveOver	T017	custom window title minimize/maximize/restore button background with mouse over when window is active (Windows only)
+titleButtonFgActiveOver	T017	custom window title minimize/maximize/restore button icon with mouse over when window is active (Windows only)
+titleButtonCloseBg	T017	custom window title close button background when window is inactive (Windows only)
+titleButtonCloseFg	T017	custom window title close button icon when window is inactive (Windows only)
+titleButtonCloseBgOver	T017	custom window title close button background with mouse over when window is inactive (Windows only)
+titleButtonCloseFgOver	T017	custom window title close button icon with mouse over when window is inactive (Windows only)
+titleButtonCloseBgActive	T017	custom window title close button background when window is active (Windows only)
+titleButtonCloseFgActive	T017	custom window title close button icon when window is active (Windows only)
+titleButtonCloseBgActiveOver	T017	custom window title close button background with mouse over when window is active (Windows only)
+titleButtonCloseFgActiveOver	T017	custom window title close button icon with mouse over when window is active (Windows only)
+titleFg	T017	custom window title text when window is inactive (Windows 11 and macOS)
+titleFgActive	T017	custom window title text when window is active (Windows 11 and macOS)
+trayCounterBg	T017	tray icon counter background
+trayCounterBgMute	T017	tray icon counter background if all unread messages are muted
+trayCounterFg	T017	tray icon counter text
+trayCounterBgMacInvert	T017	tray icon counter background when tray icon is pressed or when dark theme of macOS is used (macOS only)
+trayCounterFgMacInvert	T017	tray icon counter text when tray icon is pressed or when dark theme of macOS is used (macOS only)
+layerBg	T015	box and main menu background layer fade
+cancelIconFg	T015	default for settings close icon and box search cancel icon
+cancelIconFgOver	T015	default for settings close icon and box search cancel icon with mouse over
+boxBg	T015	box background
+boxTextFg	T015	box text
+boxTextFgGood	T015	accepted box text (like when choosing username that is not occupied)
+boxTextFgError	T015	rejecting box text (like when choosing username that is occupied)
+boxTitleFg	T015	box title text
+boxSearchBg	T015	box search field background (like in contacts box)
+boxTitleAdditionalFg	T015	box title additional text (like in create group box when you see chosen members count)
+boxTitleCloseFg	T015	settings close icon and box search cancel icon (like in contacts box)
+boxTitleCloseFgOver	T015	settings close icon and box search cancel icon (like in contacts box) with mouse over
+boxDividerBg	T015	gray divider in boxes and layers
+boxDividerFg	T015	gray divider shadow in boxes and layers
+paymentsTipActive	T015	tip button text in payments checkout form
+membersAboutLimitFg	T015	text in channel members box about the limit (max 200 last members are shown)
+contactsBg	T015	contacts (and some other) box row background
+contactsBgOver	T015	contacts (and some other) box row background with mouse over
+contactsNameFg	T015	contacts (and some other) box row name text
+contactsStatusFg	T015	contacts (and some other) box row additional text (like last seen stamp)
+contactsStatusFgOver	T015	contacts (and some other) box row additional text (like last seen stamp) with mouse over
+contactsStatusFgOnline	T015	contacts (and some other) box row active additional text (like online status)
+photoCropFadeBg	T015	avatar crop box fade background (when choosing a new photo in Settings or for a group)
+photoCropPointFg	T015	avatar crop box corner rectangles (when choosing a new photo in Settings or for a group)
+callArrowFg	T015	received phone call arrow (in calls list box)
+callArrowMissedFg	T015	missed phone call arrow (in calls list box)
+introBg	T015	login background
+introTitleFg	T015	login title text
+introDescriptionFg	T015	login description text
+introCoverTopBg	T015	intro gradient top (from)
+introCoverBottomBg	T015	intro gradient bottom (to)
+introCoverIconsFg	T015	intro cloud graphics
+introCoverPlaneTrace	T015	intro plane traces
+introCoverPlaneInner	T015	intro plane part
+introCoverPlaneOuter	T015	intro plane part
+introCoverPlaneTop	T015	intro plane part
+dialogsMenuIconFg	T012	main menu and passcode lock icon
+dialogsMenuIconFgOver	T012	main menu and passcode lock icon with mouse over
+dialogsBg	T012	chat list background
+dialogsNameFg	T012	chat list name text
+dialogsChatIconFg	T012	chat list group or channel icon
+dialogsDateFg	T012	chat list date text
+dialogsTextFg	T012	chat list message text
+dialogsTextFgService	T012	chat list group sender name text (or media message type text)
+dialogsDraftFg	T012	chat list draft label
+dialogsVerifiedIconBg	T012	chat list verified icon background
+dialogsVerifiedIconFg	T012	chat list verified icon check
+dialogsSendingIconFg	T012	chat list sending message icon (clock)
+dialogsSentIconFg	T012	chat list sent message tick / double tick icon
+dialogsUnreadBg	T012	chat list unread badge background for not muted chat
+dialogsUnreadBgMuted	T012	chat list unread badge background for muted chat
+dialogsUnreadFg	T012	chat list unread badge text
+dialogsArchiveFg	T012	chat list archive name text
+dialogsOnlineBadgeFg	T012	chat list online status
+dialogsScamFg	T012	chat list scam label
+dialogsBgOver	T012	chat list background with mouse over
+dialogsNameFgOver	T012	chat list name text with mouse over
+dialogsChatIconFgOver	T012	chat list group or channel icon with mouse over
+dialogsDateFgOver	T012	chat list date text with mouse over
+dialogsTextFgOver	T012	chat list message text with mouse over
+dialogsTextFgServiceOver	T012	chat list group sender name text with mouse over
+dialogsDraftFgOver	T012	chat list draft label with mouse over
+dialogsVerifiedIconBgOver	T012	chat list verified icon background with mouse over
+dialogsVerifiedIconFgOver	T012	chat list verified icon check with mouse over
+dialogsSendingIconFgOver	T012	chat list sending message icon (clock) with mouse over
+dialogsSentIconFgOver	T012	chat list sent message tick / double tick icon with mouse over
+dialogsUnreadBgOver	T012	chat list unread badge background for not muted chat with mouse over
+dialogsUnreadBgMutedOver	T012	chat list unread badge background for muted chat with mouse over
+dialogsUnreadFgOver	T012	chat list unread badge text with mouse over
+dialogsArchiveFgOver	T012	chat list archive name text with mouse over
+dialogsScamFgOver	T012	chat list scam label with mouse over
+dialogsBgActive	T012	chat list background for current (active) chat
+dialogsNameFgActive	T012	chat list name text for current (active) chat
+dialogsChatIconFgActive	T012	chat list group or channel icon for current (active) chat
+dialogsDateFgActive	T012	chat list date text for current (active) chat
+dialogsTextFgActive	T012	chat list message text for current (active) chat
+dialogsTextFgServiceActive	T012	chat list group sender name text for current (active) chat
+dialogsDraftFgActive	T012	chat list draft label for current (active) chat
+dialogsVerifiedIconBgActive	T012	chat list verified icon background for current (active) chat
+dialogsVerifiedIconFgActive	T012	chat list verified icon check for current (active) chat
+dialogsSendingIconFgActive	T012	chat list sending message icon (clock) for current (active) chat
+dialogsSentIconFgActive	T012	chat list sent message tick / double tick icon for current (active) chat
+dialogsUnreadBgActive	T012	chat list unread badge background for not muted chat for current (active) chat
+dialogsUnreadBgMutedActive	T012	chat list unread badge background for muted chat for current (active) chat
+dialogsUnreadFgActive	T012	chat list unread badge text for current (active) chat
+dialogsOnlineBadgeFgActive	T012	chat list online status for current (active) chat
+dialogsScamFgActive	T012	chat list scam label for current (active) chat
+dialogsRippleBg	T012	chat list background ripple effect
+dialogsRippleBgActive	T012	chat list background ripple effect for current (active) chat
+searchedBarBg	T012	search results bar background (in chats list, contacts box..)
+searchedBarFg	T012	search results bar text (in chats list, contacts box..)
+searchedTextMatchBg	T012	in-page search results highlight background (Instant View, markdown editor)
+searchedTextMatchFg	T012	in-page search results highlight text (Instant View, markdown editor)
+searchedTextCurrentMatchBg	T012	in-page search current result highlight background (Instant View, markdown editor)
+searchedTextCurrentMatchFg	T012	in-page search current result highlight text (Instant View, markdown editor)
+topBarBg	T012	top bar background (in chat view, media overview..)
+emojiPanBg	T014	emoji panel background
+emojiPanCategories	T014	emoji panel categories background
+emojiPanHeaderFg	T014	emoji panel section header text
+emojiPanHeaderBg	T014	emoji panel section header background
+emojiIconFg	T014	emoji category icon
+emojiSubIconFgActive	T014	active emoji subcategory icon
+stickerPanDeleteBg	T014	delete X button background for custom sent stickers in stickers panel (legacy)
+stickerPanDeleteFg	T014	delete X button icon for custom sent stickers in stickers panel (legacy)
+stickerPreviewBg	T014	sticker and GIF preview background (when you press and hold on a sticker)
+stickerPanPremium1	T014	premium sticker pack icon gradient 1
+stickerPanPremium2	T014	premium sticker pack icon gradient 2
+historyTextInFg	T013	inbox message text
+historyTextInFgSelected	T013	inbox message selected text or text in a selected message
+historyTextOutFg	T013	outbox message text
+historyTextOutFgSelected	T013	outbox message selected text or text in a selected message
+historyLinkInFg	T013	inbox message link
+historyLinkInFgSelected	T013	inbox message link in a selected text or message
+historyLinkOutFg	T013	outbox message link
+historyLinkOutFgSelected	T013	outbox message link in a selected text or message
+historyFileNameInFg	T014	inbox media filename text
+historyFileNameInFgSelected	T014	inbox media filename text in a selected message
+historyFileNameOutFg	T014	outbox media filename text
+historyFileNameOutFgSelected	T014	outbox media filename text in a selected message
+historyOutIconFg	T013	outbox message tick / double tick icon
+historyOutIconFgSelected	T013	outbox message tick / double tick icon in a selected message
+historyIconFgInverted	T013	media message tick / double tick icon (like in sent photo)
+historySendingOutIconFg	T013	outbox sending message icon (clock)
+historySendingInIconFg	T013	inbox sending message icon (clock) (like in sent messages to yourself or in sent messages to a channel)
+historySendingInvertedIconFg	T013	media sending message icon (clock) (like in sent photo)
+historyCallArrowInFg	T013	received phone call arrow
+historyCallArrowInFgSelected	T013	received phone call arrow in a selected message
+historyCallArrowMissedInFg	T013	missed phone call arrow
+historyCallArrowMissedInFgSelected	T013	missed phone call arrow in a selected message
+historyCallArrowOutFg	T013	outgoing phone call arrow
+historyCallArrowOutFgSelected	T013	outgoing phone call arrow
+historyUnreadBarBg	T013	new unread messages bar background
+historyUnreadBarBorder	T013	new unread messages bar shadow
+historyUnreadBarFg	T013	new unread messages bar text
+historyForwardChooseBg	T013	forwarding messages in a large window size "choose recipient" background
+historyForwardChooseFg	T013	forwarding messages in a large window size "choose recipient" text
+historyPeer1NameFg	T013	red group member name
+historyPeer1NameFgSelected	T013	red group member name in a selected message
+historyPeer1UserpicBg	T013	red userpic background
+historyPeer2NameFg	T013	green group member name
+historyPeer2NameFgSelected	T013	green group member name in a selected message
+historyPeer2UserpicBg	T013	green userpic background
+historyPeer3NameFg	T013	yellow group member name (actually unused)
+historyPeer3NameFgSelected	T013	yellow group member name in a selected message (actually unused)
+historyPeer3UserpicBg	T013	yellow userpic background (actually unused)
+historyPeer4NameFg	T013	blue group member name
+historyPeer4NameFgSelected	T013	blue group member name in a selected message
+historyPeer4UserpicBg	T013	blue userpic background
+historyPeer5NameFg	T013	purple group member name
+historyPeer5NameFgSelected	T013	purple group member name in a selected message
+historyPeer5UserpicBg	T013	purple userpic background
+historyPeer6NameFg	T013	pink group member name
+historyPeer6NameFgSelected	T013	pink group member name in a selected message
+historyPeer6UserpicBg	T013	pink userpic background
+historyPeer7NameFg	T013	sea group member name
+historyPeer7NameFgSelected	T013	sea group member name in a selected message
+historyPeer7UserpicBg	T013	sea userpic background
+historyPeer8NameFg	T013	orange group member name
+historyPeer8NameFgSelected	T013	orange group member name in a selected message
+historyPeer8UserpicBg	T013	orange userpic background
+historyPeerUserpicFg	T013	default userpic initials
+historyPeerSavedMessagesBg	T013	saved messages userpic background
+historyPeerArchiveUserpicBg	T013	archive folder userpic background
+historyPeer1UserpicBg2	T013	the second red userpic background
+historyPeer2UserpicBg2	T013	the second green userpic background
+historyPeer3UserpicBg2	T013	the second yellow userpic background (actually unused)
+historyPeer4UserpicBg2	T013	the second blue userpic background
+historyPeer5UserpicBg2	T013	the second purple userpic background
+historyPeer6UserpicBg2	T013	the second pink userpic background
+historyPeer7UserpicBg2	T013	the second sea userpic background
+historyPeer8UserpicBg2	T013	the second orange userpic background
+historyPeerSavedMessagesBg2	T013	the second saved messages userpic background
+settingsIconBg1	T015	red settings icon background
+settingsIconBg2	T015	green settings icon background
+settingsIconBg3	T015	light-orange settings icon background
+settingsIconBg4	T015	light-blue settings icon background
+settingsIconBg5	T015	dark-blue settings icon background
+settingsIconBg6	T015	purple settings icon background
+settingsIconBg8	T015	dark-orange settings icon background
+settingsIconBgArchive	T015	archive main menu icon background
+settingsIconFg	T015	settings icon shape
+historyScrollBarBg	T013	scroll bar current rectangle, the bar itself in the chat view (adjusted)
+historyScrollBarBgOver	T013	scroll bar current rectangle with mouse over it in the chat view (adjusted)
+historyScrollBg	T013	scroll bar background (adjusted)
+historyScrollBgOver	T013	scroll bar background with mouse over the scroll bar (adjusted)
+msgInBg	T013	inbox message background
+msgInBgSelected	T013	inbox selected message background (and background of selected text in those messages)
+msgOutBg	T013	outbox message background
+msgOutBgSelected	T013	outbox selected message background (and background of selected text in those messages)
+msgSelectOverlay	T013	overlay which is filling the media parts of selected messages (like in selected photo message)
+msgStickerOverlay	T013	overlay which is filling the selected sticker message
+msgInServiceFg	T013	inbox message information text (like information about a forwarded message original sender)
+msgInServiceFgSelected	T013	inbox selected message information text (like information about a forwarded message original sender)
+msgOutServiceFg	T013	outbox message information text (like information about a forwarded message original sender)
+msgOutServiceFgSelected	T013	outbox message information text (like information about a forwarded message original sender)
+msgInShadow	T013	inbox message shadow (below the bubble)
+msgInShadowSelected	T013	inbox selected message shadow (below the bubble)
+msgOutShadow	T013	outbox message shadow (below the bubble)
+msgOutShadowSelected	T013	outbox selected message shadow (below the bubble)
+msgInDateFg	T013	inbox message time text
+msgInDateFgSelected	T013	inbox selected message time text
+msgOutDateFg	T013	outbox message time text
+msgOutDateFgSelected	T013	outbox selected message time text
+msgServiceFg	T013	service message text (like date dividers or service message about the group title being changed)
+msgServiceBg	T013	service message background (like in a service message about group title being changed) (adjusted)
+msgServiceBgSelected	T013	service message selected text background (like in a service message about group title being changed) (adjusted)
+msgInReplyBarColor	T013	inbox message reply outline
+msgInReplyBarSelColor	T013	inbox selected message reply outline
+msgOutReplyBarColor	T013	outbox message reply outline
+msgOutReplyBarSelColor	T013	outbox selected message reply outline
+msgImgReplyBarColor	T013	sticker message reply outline
+msgInMonoFg	T013	inbox message monospace text (like a message sent with `test` text)
+msgOutMonoFg	T013	outbox message monospace text
+msgInMonoFgSelected	T013	inbox message monospace text in a selected text or message
+msgOutMonoFgSelected	T013	outbox message monospace text in a selected text or message
+msgDateImgFg	T014	media message time text (like time text in a sent photo)
+msgDateImgBg	T014	media message time bubble background (like time bubble in a sent photo) or file with thumbnail download icon circle background
+msgDateImgBgOver	T014	media message download icon circle background with mouse over (like file with thumbnail download icon)
+msgDateImgBgSelected	T014	selected media message time bubble background
+msgFileThumbLinkInFg	T014	inbox media file message with thumbnail download / open with button text
+msgFileThumbLinkInFgSelected	T014	inbox selected media file message with thumbnail download / open with button text
+msgFileThumbLinkOutFg	T014	outbox media file message with thumbnail download / open with button text
+msgFileThumbLinkOutFgSelected	T014	outbox selected media file message with thumbnail download / open with button text
+msgFileInBg	T014	inbox audio file download circle background
+msgFileInBgOver	T014	inbox audio file download circle background with mouse over
+msgFileInBgSelected	T014	inbox selected audio file download circle background
+msgFileOutBg	T014	outbox audio file download circle background
+msgFileOutBgSelected	T014	outbox selected audio file download circle background
+msgFile1Bg	T014	blue shared links / files without image square thumbnail
+msgFile1BgDark	T014	blue shared files without image download circle background
+msgFile1BgOver	T014	blue shared files without image download circle background with mouse over
+msgFile1BgSelected	T014	blue shared files without image download circle background if file is selected
+msgFile2Bg	T014	green shared links / shared files without image square thumbnail
+msgFile2BgDark	T014	green shared files without image download circle background
+msgFile2BgOver	T014	green shared files without image download circle background with mouse over
+msgFile2BgSelected	T014	green shared files without image download circle background if file is selected
+msgFile3Bg	T014	red shared links / shared files without image square thumbnail
+msgFile3BgDark	T014	red shared files without image download circle background
+msgFile3BgOver	T014	red shared files without image download circle background with mouse over
+msgFile3BgSelected	T014	red shared files without image download circle background if file is selected
+msgFile4Bg	T014	yellow shared links / shared files without image square thumbnail
+msgFile4BgDark	T014	yellow shared files without image download circle background
+msgFile4BgOver	T014	yellow shared files without image download circle background with mouse over
+msgFile4BgSelected	T014	yellow shared files without image download circle background if file is selected
+historyFileInIconFg	T014	inbox file without thumbnail (like audio file) download arrow icon
+historyFileInIconFgSelected	T014	inbox selected file without thumbnail (like audio file) download arrow icon
+historyFileInRadialFg	T014	inbox file without thumbnail (like audio file) radial download animation line
+historyFileInRadialFgSelected	T014	inbox selected file without thumbnail (like audio file) radial download animation line
+historyFileOutIconFg	T014	outbox file without thumbnail (like audio file) download arrow icon
+historyFileOutIconFgSelected	T014	outbox selected file without thumbnail (like audio file) download arrow icon
+historyFileOutRadialFg	T014	outbox file without thumbnail (like audio file) radial download animation line
+historyFileOutRadialFgSelected	T014	outbox selected file without thumbnail (like audio file) radial download animation line
+historyFileThumbIconFg	T014	file with thumbnail (or photo / video) download arrow icon
+historyFileThumbIconFgSelected	T014	selected file with thumbnail (or photo / video) download arrow icon
+historyFileThumbRadialFg	T014	file with thumbnail (or photo / video) radial download animation line
+historyFileThumbRadialFgSelected	T014	selected file with thumbnail (or photo / video) radial download animation line
+historyVideoMessageProgressFg	T014	radial playback progress in round video messages
+msgWaveformInActive	T014	inbox voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformInActiveSelected	T014	inbox selected voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformInInactive	T014	inbox voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformInInactiveSelected	T014	inbox selected voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformOutActive	T014	outbox voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformOutActiveSelected	T014	outbox selected voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformOutInactive	T014	outbox voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformOutInactiveSelected	T014	outbox selected voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgBotKbOverBgAdd	T014	this is painted over a bot inline keyboard button (which has msgServiceBg background) when mouse is over that button
+msgBotKbIconFg	T014	bot inline keyboard button icon in the top-right corner (like in @vote bot when a poll is ready to be shared)
+msgBotKbRippleBg	T014	bot inline keyboard button ripple effect
+mediaInFg	T014	inbox media message status text (like in file that is being downloaded)
+mediaInFgSelected	T014	inbox selected media message status text (like in file that is being downloaded)
+mediaOutFg	T014	outbox media message status text (like in file that is being downloaded)
+mediaOutFgSelected	T014	outbox selected media message status text (like in file that is being downloaded)
+youtubePlayIconBg	T014	youtube play icon background (when a link to a youtube video with a webpage preview is sent)
+youtubePlayIconFg	T014	youtube play icon arrow (when a link to a youtube video with a webpage preview is sent)
+videoPlayIconBg	T014	other video play icon background (like when a link to a vimeo video with a webpage preview is sent)
+videoPlayIconFg	T014	other video play icon arrow (like when a link to a vimeo video with a webpage preview is sent)
+toastBg	T016	toast notification background (like when you click on your t.me link when editing your username)
+toastFg	T016	toast notification text (like when you click on your t.me link when editing your username)
+historyToDownBg	T013	arrow button background (to scroll to the end of the viewed chat)
+historyToDownBgOver	T013	arrow button background with mouse over
+historyToDownBgRipple	T013	arrow button ripple effect
+historyToDownFg	T013	arrow button icon
+historyToDownFgOver	T013	arrow button icon with mouse over
+historyToDownShadow	T013	arrow button shadow
+historyComposeAreaBg	T013	history compose area background (message write area / reply information / forwarding information)
+historyComposeAreaFg	T013	history compose area text
+historyComposeAreaFgService	T013	history compose area text when replying to a media message
+historyComposeIconFg	T013	history compose area icon (like emoji, attach, bot command..)
+historyComposeIconFgOver	T013	history compose area icon with mouse over
+historySendIconFg	T013	send message icon
+historySendIconFgOver	T013	send message icon with mouse over
+historyPinnedBg	T013	pinned message area background
+historyReplyBg	T013	reply / forward / edit message area background
+historyReplyIconFg	T013	reply / forward / edit message left icon
+historyReplyCancelFg	T013	reply / forward / edit message cancel button
+historyReplyCancelFgOver	T013	reply / forward / edit message cancel button with mouse over
+historyComposeButtonBg	T013	unblock / join channel / mute channel button background
+historyComposeButtonBgOver	T013	unblock / join channel / mute channel button background with mouse over
+historyComposeButtonBgRipple	T013	unblock / join channel / mute channel button ripple effect
+mapPointDrop	T014	geo location marker background
+mapPointDot	T014	geo location marker point
+overviewCheckBg	T014	shared media / files / links checkbox background for not selected rows when some rows are selected
+overviewCheckBgActive	T014	shared media / files / links checkbox background for selected rows
+overviewCheckBorder	T014	shared media round checkbox border
+overviewCheckFgActive	T014	shared files / links checkbox icon for selected rows
+overviewPhotoSelectOverlay	T014	shared photos / videos / links fill for selected rows
+profileStatusFgOver	T015	group members list in group profile user last seen text with mouse over
+profileVerifiedCheckBg	T015	profile verified check icon background
+profileVerifiedCheckFg	T015	profile verified check icon tick
+profileAdminStartFg	T015	group members list creator star icon
+notificationsBoxMonitorFg	T015	custom notifications settings box monitor color
+notificationsBoxScreenBg	T015	#6389a8; // custom notifications settings box monitor screen background
+notificationSampleUserpicFg	T015	custom notifications settings box small sample userpic placeholder
+notificationSampleCloseFg	T015	custom notifications settings box small sample close button placeholder
+notificationSampleTextFg	T015	custom notifications settings box small sample text placeholder
+notificationSampleNameFg	T015	custom notifications settings box small sample name placeholder
+mainMenuBg	T015	main menu background
+mainMenuCoverBg	T015	main menu top cover background
+mainMenuCloudFg	T015	main menu top cover saved messages / archive button icon
+mainMenuCloudBg	T015	main menu top cover saved messages / archive button background
+mediaPlayerBg	T016	audio file player background
+mediaPlayerActiveFg	T016	audio file player playback progress already played part
+mediaPlayerInactiveFg	T016	audio file player playback progress upcoming (not played yet) part with mouse over
+mediaPlayerDisabledFg	T016	audio file player loading progress (when you're playing an audio file and switch to the previous one which is not loaded yet)
+mediaviewFileBg	T016	file rectangle background (when you view a png file in Media Viewer and go to a previous, not loaded yet, file)
+mediaviewFileNameFg	T016	file name in file rectangle
+mediaviewFileSizeFg	T016	file size text in file rectangle
+mediaviewFileRedCornerFg	T016	red file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .pdf)
+mediaviewFileYellowCornerFg	T016	yellow file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .zip)
+mediaviewFileGreenCornerFg	T016	green file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .exe)
+mediaviewFileBlueCornerFg	T016	blue file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .dmg)
+mediaviewFileExtFg	T016	file extension text in file thumbnail placeholder in file rectangle
+mediaviewMenuBg	T016	context menu in Media Viewer background
+mediaviewMenuBgOver	T016	context menu item background with mouse over
+mediaviewMenuBgRipple	T016	context menu item ripple effect
+mediaviewMenuFg	T016	context menu item text
+mediaviewBg	T016	Media Viewer background
+mediaviewVideoBg	T016	Media Viewer background when viewing a video in full screen
+mediaviewControlBg	T016	controls background (like next photo / previous photo)
+mediaviewControlFg	T016	controls icon (like next photo / previous photo)
+mediaviewCaptionBg	T016	caption text background (when viewing photo with caption)
+mediaviewCaptionFg	T016	caption text
+mediaviewTextLinkFg	T016	caption text link
+mediaviewSaveMsgBg	T016	save to file toast message background in Media Viewer
+mediaviewSaveMsgFg	T016	save to file toast message text
+mediaviewPlaybackActive	T016	video playback progress already played part
+mediaviewPlaybackInactive	T016	video playback progress upcoming (not played yet) part
+mediaviewPlaybackActiveOver	T016	video playback progress already played part with mouse over
+mediaviewPlaybackInactiveOver	T016	video playback progress upcoming (not played yet) part with mouse over
+mediaviewPlaybackProgressFg	T016	video playback progress text
+mediaviewPlaybackIconFg	T016	video playback controls icon
+mediaviewPlaybackIconFgOver	T016	video playback controls icon with mouse over
+mediaviewPlaybackIconRipple	T016	video playback controls ripple effect
+mediaviewPipControlsFg	T016	picture-in-picture controls
+mediaviewPipControlsFgOver	T016	picture-in-picture controls with mouse over
+mediaviewPipPlaybackActive	T016	picture-in-picture playback progress already played part
+mediaviewPipPlaybackInactive	T016	picture-in-picture playback progress upcoming (not played yet) part
+mediaviewTransparentBg	T016	transparent filling part (when viewing a transparent .png file in Media Viewer)
+mediaviewTransparentFg	T016	another transparent filling part
+notificationBg	T016	custom notification window background
+callBg	T016	old phone call popup background
+callBgOpaque	T016	phone call popup background
+callBgButton	T016	phone call window control buttons bg
+callNameFg	T016	phone call popup name text
+callStatusFg	T016	phone call popup status text
+callIconBg	T016	phone call mute mic and camera button background
+callIconFg	T016	phone call popup answer, hangup, mute mic and camera icon
+callIconBgActive	T016	phone call line busy cancel, muted mic and camera button background
+callIconFgActive	T016	phone call line busy cancel, muted mic and camera icon
+callIconActiveRipple	T016	phone call line busy cancel, muted mic and camera ripple effect
+callAnswerBg	T016	phone call popup answer button background
+callAnswerRipple	T016	phone call popup answer button ripple effect
+callAnswerBgOuter	T016	phone call popup answer button outer ripple effect
+callHangupBg	T016	phone call popup hangup button background
+callHangupRipple	T016	phone call popup hangup button ripple effect
+callMuteRipple	T016	phone call popup mute mic and camera ripple effect
+groupCallBg	T016	group call popup background
+groupCallActiveFg	T016	group call active controls text
+groupCallMembersBg	T016	group call members list background
+groupCallMembersBgOver	T016	group call members list row with mouse over
+groupCallMembersBgRipple	T016	group call member row ripple effect
+groupCallMembersFg	T016	group call member name text
+groupCallMemberActiveIcon	T016	group call active member icon
+groupCallMemberActiveStatus	T016	group call active member status text
+groupCallMemberInactiveIcon	T016	group call inactive member icon
+groupCallMemberInactiveStatus	T016	group call inactive member status text
+groupCallMemberMutedIcon	T016	group call muted by admin member icon
+groupCallMemberNotJoinedStatus	T016	group call non joined member status text
+groupCallIconFg	T016	group call mute / settings / leave icon
+groupCallLive1	T016	group call live button color1
+groupCallLive2	T016	group call live button color2
+groupCallMuted1	T016	group call muted button color1
+groupCallMuted2	T016	group call muted button color2
+groupCallForceMutedBar1	T016	group call force muted top bar color1
+groupCallForceMutedBar2	T016	group call force muted top bar color2
+groupCallForceMutedBar3	T016	group call force muted top bar color3
+groupCallForceMuted1	T016	group call force muted button color1
+groupCallForceMuted2	T016	group call force muted button color2
+groupCallForceMuted3	T016	group call force muted button color3
+groupCallMenuBg	T016	group call popup menu background
+groupCallMenuBgOver	T016	group call popup menu with mouse over
+groupCallMenuBgRipple	T016	group call popup menu ripple effect
+groupCallLeaveBg	T016	group call leave button background
+groupCallLeaveBgRipple	T016	group call leave button ripple effect
+groupCallVideoTextFg	T016	group call text over video
+groupCallVideoSubTextFg	T016	group call additional text over video
+callBarBg	T016	active phone call bar background
+callBarMuteRipple	T016	active phone call bar mute and hangup button ripple effect
+callBarBgMuted	T016	phone call bar with muted mic background
+callBarFg	T016	phone call bar text and icons
+importantTooltipBg	T016	group call important tooltip background color
+importantTooltipFg	T016	group call important tooltip text color
+importantTooltipFgLink	T016	group call important tooltip text link color
+outdatedFg	T017	operating system version is outdated bar text
+outdateSoonBg	T017	operating system version is soon outdated bar background
+outdatedBg	T017	operating system version is already outdated bar background
+spellUnderline	T013	misspelled words
+walletTitleBg	T017	wallet window title background when window is inactive
+walletTitleBgActive	T017	wallet window title background when window is active
+walletTitleButtonBg	T017	wallet window title minimize/maximize/restore button background when window is inactive (Windows only)
+walletTitleButtonFg	T017	wallet window title minimize/maximize/restore button icon when window is inactive (Windows only)
+walletTitleButtonBgOver	T017	wallet window title minimize/maximize/restore button background with mouse over when window is inactive (Windows only)
+walletTitleButtonFgOver	T017	wallet window title minimize/maximize/restore button icon with mouse over when window is inactive (Windows only)
+walletTitleButtonBgActive	T017	wallet window title minimize/maximize/restore button background when window is active (Windows only)
+walletTitleButtonFgActive	T017	wallet window title minimize/maximize/restore button icon when window is active (Windows only)
+walletTitleButtonBgActiveOver	T017	wallet window title minimize/maximize/restore button background with mouse over when window is active (Windows only)
+walletTitleButtonFgActiveOver	T017	wallet window title minimize/maximize/restore button icon with mouse over when window is active (Windows only)
+walletTitleButtonCloseBg	T017	wallet window title close button background when window is inactive (Windows only)
+walletTitleButtonCloseFg	T017	wallet window title close button icon when window is inactive (Windows only)
+walletTitleButtonCloseBgOver	T017	wallet window title close button background with mouse over when window is inactive (Windows only)
+walletTitleButtonCloseFgOver	T017	wallet window title close button icon with mouse over when window is inactive (Windows only)
+walletTitleButtonCloseBgActive	T017	wallet window title close button background when window is active (Windows only)
+walletTitleButtonCloseFgActive	T017	wallet window title close button icon when window is active (Windows only)
+walletTitleButtonCloseBgActiveOver	T017	wallet window title close button background with mouse over when window is active (Windows only)
+walletTitleButtonCloseFgActiveOver	T017	wallet window title close button icon with mouse over when window is active (Windows only)
+walletTopBg	T017	wallet top part background
+walletBalanceFg	T017	wallet balance text
+walletSubBalanceFg	T017	wallet balance label text
+walletTopLabelFg	T017	wallet top updated label text
+walletTopIconFg	T017	wallet top refresh and menu icons
+walletTopIconRipple	T017	wallet top menu icon ripple effect
+sideBarBg	T012	filters side bar background
+sideBarBgActive	T012	filters side bar active background
+sideBarBgRipple	T012	filters side bar ripple effect
+sideBarTextFg	T012	filters side bar text
+sideBarTextFgActive	T012	filters side bar active item text
+sideBarIconFg	T012	filters side bar icon
+sideBarIconFgActive	T012	filters side bar active item icon
+sideBarBadgeBg	T012	filters side bar badge background
+sideBarBadgeBgActive	T012	filters side bar badge background when folder is open
+sideBarBadgeBgMuted	T012	filters side bar unimportant badge background
+sideBarBadgeBgMutedActive	T012	filters side bar unimportant badge background when folder is open
+sideBarBadgeFg	T012	filters side bar badge text
+songCoverOverlayFg	T014	song cover overlay
+photoEditorItemBaseHandleFg	T016	photo editor handle circle
+premiumButtonBg1	T015	upgrade to premium button gradient 1
+premiumButtonBg2	T015	upgrade to premium button gradient 2
+premiumButtonBg3	T015	upgrade to premium button gradient 3
+premiumButtonFg	T015	upgrade to premium button text
+premiumIconBg1	T015	icon in premium settings gradient 1
+premiumIconBg2	T015	icon in premium settings gradient 2
+premiumIconBg3	T015	icon in premium settings gradient 3
+statisticsChartInactive	T015	inactive area in footer of statistic charts
+statisticsChartActive	T015	sides in footer of statistic charts
+statisticsChartLineBlue	T015	represents blue color on statistical charts
+statisticsChartLineGreen	T015	represents green color on statistical charts
+statisticsChartLineRed	T015	represents red color on statistical charts
+statisticsChartLineGolden	T015	represents golden color on statistical charts
+statisticsChartLineLightblue	T015	represents lightblue color on statistical charts
+statisticsChartLineLightgreen	T015	represents lightgreen color on statistical charts
+statisticsChartLineOrange	T015	represents orange color on statistical charts
+statisticsChartLineIndigo	T015	represents indigo color on statistical charts
+statisticsChartLinePurple	T015	represents purple color on statistical charts
+statisticsChartLineCyan	T015	represents cyan color on statistical charts
+creditsBg1	T017	credits icon gradient 1, normal
+creditsBg2	T017	credits icon gradient 2, light
+creditsBg3	T017	credits icon gradient 3, dark
+creditsFg	T017	credits text on light background
+creditsStroke	T017	credits icon stroke
+currencyFg	T017	currency icon, blue
+rankAdminFg	T013	admin badge text and pill, green
+rankOwnerFg	T013	owner badge text and pill, purple
+rankUserFg	T013	regular user badge text, gray
+dialogsMentionIconFg	T012	chat list mention icon
+dialogsReactionIconFg	T012	chat list reaction icon
+dialogsPollIconFg	T012	chat list poll icon
