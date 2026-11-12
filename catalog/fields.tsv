@@ -1,0 +1,8 @@
+key	kind	description
+name	cloud	Название облачной темы
+shortname	cloud	Короткое имя для ссылки на облачную тему
+wallpaper	cloud	Ссылка на облачные обои чата
+background.jpg	archive	Встроенные обои JPG
+background.png	archive	Встроенные обои PNG
+tiled.jpg	archive	Повторяющиеся обои JPG
+tiled.png	archive	Повторяющиеся обои PNG

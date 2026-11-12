@@ -1,0 +1,7 @@
+key	component	state	property	description	source	implementation	verification
+dialogsUnreadBg	unread-dot	normal	background	Цвет точки непрочитанного в обычном чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:219	-	-
+dialogsUnreadBgOver	unread-dot	hover	background	Цвет точки непрочитанного при наведении на чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:218	-	-
+dialogsUnreadBgActive	unread-dot	active	background	Цвет точки непрочитанного в открытом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:216	-	-
+dialogsUnreadBgMuted	unread-dot	muted	background	Цвет точки непрочитанного в заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:214	-	-
+dialogsUnreadBgMutedOver	unread-dot	muted-hover	background	Цвет точки непрочитанного при наведении на заглушённый чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:213	-	-
+dialogsUnreadBgMutedActive	unread-dot	muted-active	background	Цвет точки непрочитанного в открытом заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:211	-	-
