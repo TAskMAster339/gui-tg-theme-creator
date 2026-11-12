@@ -1,5 +1,6 @@
 const hexColor = /^#(?:[0-9a-f]{6}|[0-9a-f]{8})$/i;
 const identifier = /^[A-Za-z0-9_]+$/;
+const metadataPrefix = "// @theme-field ";
 const cloudFields = new Set(["name", "shortname", "wallpaper"]);
 
 export function readDefaults(catalog: string): ReadonlyMap<string, string> {
@@ -30,6 +31,18 @@ export function parsePalette(text: string): Map<string, string> {
     }
     fields.set(key, value);
   }
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.startsWith(metadataPrefix)) {
+      continue;
+    }
+    const field: unknown = JSON.parse(line.slice(metadataPrefix.length));
+    if (!Array.isArray(field) || field.length !== 2
+      || typeof field[0] !== "string" || !identifier.test(field[0])
+      || typeof field[1] !== "string" || fields.has(field[0])) {
+      throw new Error("Некорректное дополнительное поле палитры.");
+    }
+    fields.set(field[0], field[1]);
+  }
   if (!fields.size) {
     throw new Error("Палитра пуста.");
   }
@@ -59,6 +72,42 @@ export class Palette {
     const fields = new Map(this.fields);
     fields.set(key, value.toUpperCase());
     return new Palette(this.defaults, fields);
+  }
+
+  toThemeText(): string {
+    const lines: string[] = [];
+    const emitted = new Set<string>();
+    const fields = new Map(this.fields);
+    // Telegram expects at least one color declaration in a usable palette.
+    if (![...fields.keys()].some((key) => this.defaults.has(key))) {
+      fields.set("windowBg", this.color("windowBg"));
+    }
+    for (const key of fields.keys()) {
+      const path = new Set<string>();
+      let current = key;
+      while (!emitted.has(current) && !path.has(current)) {
+        const value = fields.get(current);
+        if (value === undefined) {
+          if (this.defaults.has(current)) {
+            lines.push(`${current}: ${this.color(current)};`);
+            emitted.add(current);
+          }
+          break;
+        }
+        path.add(current);
+        if (cloudFields.has(current) || !identifier.test(value)) {
+          break;
+        }
+        current = value;
+      }
+      for (const name of [...path].reverse()) {
+        const value = fields.get(name)!;
+        const native = !cloudFields.has(name) && (hexColor.test(value) || identifier.test(value));
+        lines.push(native ? `${name}: ${value};` : metadataPrefix + JSON.stringify([name, value]));
+        emitted.add(name);
+      }
+    }
+    return lines.join("\n") + "\n";
   }
 
   color(key: string): string {

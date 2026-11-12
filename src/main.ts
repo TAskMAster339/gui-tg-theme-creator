@@ -2,7 +2,7 @@ import bindings from "../catalog/bindings.tsv?raw";
 import palette from "../catalog/palette.tsv?raw";
 import extraFields from "../catalog/fields.tsv?raw";
 import { Palette, readDefaults } from "./palette.ts";
-import { readTheme, type ImportedTheme } from "./theme.ts";
+import { exportTheme, readTheme, type ImportedTheme } from "./theme.ts";
 import "./style.css";
 
 function getElement<T extends HTMLElement>(id: string): T {
@@ -165,6 +165,7 @@ updatePreview();
 
 const fileInput = getElement<HTMLInputElement>("theme-file");
 const resetTheme = getElement<HTMLButtonElement>("reset-theme");
+const exportButton = getElement<HTMLButtonElement>("export-theme");
 const themeStatus = getElement("theme-status");
 const themeDetails = getElement<HTMLDetailsElement>("theme-details");
 const themeFields = getElement("theme-fields");
@@ -193,6 +194,7 @@ fileInput.addEventListener("change", async () => {
     return;
   }
   fileInput.disabled = true;
+  exportButton.disabled = true;
   resetTheme.disabled = true;
   themeStatus.textContent = "Читаем файл темы…";
   try {
@@ -206,7 +208,38 @@ fileInput.addEventListener("change", async () => {
   } finally {
     fileInput.value = "";
     fileInput.disabled = false;
+    exportButton.disabled = false;
     resetTheme.disabled = currentPalette === basePalette;
+  }
+});
+
+exportButton.addEventListener("click", async () => {
+  const invalidColor = document.querySelector<HTMLInputElement>(".hex-input:invalid");
+  if (invalidColor) {
+    invalidColor.reportValidity();
+    return;
+  }
+  exportButton.disabled = true;
+  fileInput.disabled = true;
+  const imported = activeTheme;
+  try {
+    const file = await exportTheme(currentPalette, imported);
+    const originalName = imported?.source instanceof File ? imported.source.name : "telegram";
+    const name = originalName.replace(/\.(tdesktop-theme|tdesktop-palette|zip|txt)$/i, "");
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${name}-edited.tdesktop-theme`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    themeStatus.textContent = `Подготовлен файл «${link.download}».`;
+  } catch (error) {
+    themeStatus.textContent = error instanceof Error ? error.message : "Не удалось сохранить тему.";
+  } finally {
+    fileInput.disabled = false;
+    exportButton.disabled = false;
   }
 });
 

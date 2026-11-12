@@ -1,4 +1,4 @@
-import { unzipSync } from "fflate";
+import { strToU8, unzipSync, zipSync } from "fflate";
 import { Palette, parsePalette } from "./palette.ts";
 
 const paletteFiles = ["colors.tdesktop-theme", "colors.tdesktop-palette"];
@@ -11,6 +11,7 @@ export interface ImportedTheme {
   palette: Palette;
   source: Blob;
   paletteText: string;
+  paletteEntry?: string;
   wallpaper?: { name: string; bytes: Uint8Array };
 }
 
@@ -22,6 +23,7 @@ export async function readTheme(
     throw new Error("Файл темы превышает 5 МиБ.");
   }
   let content = new Uint8Array(await source.arrayBuffer());
+  let paletteEntry: string | undefined;
   let wallpaper: ImportedTheme["wallpaper"];
   if (content[0] === 0x50 && content[1] === 0x4b) {
     const names = new Map<string, string>();
@@ -54,6 +56,7 @@ export async function readTheme(
     if (!paletteName) {
       throw new Error("В ZIP-архиве нет палитры colors.tdesktop-theme или colors.tdesktop-palette.");
     }
+    paletteEntry = paletteName;
     content = new Uint8Array(files[paletteName]);
     const wallpaperName = wallpaperFiles.map((name) => names.get(name)).find(Boolean);
     if (wallpaperName) {
@@ -69,5 +72,33 @@ export async function readTheme(
   } catch {
     throw new Error("Палитра должна быть текстом в кодировке UTF-8.");
   }
-  return { palette: new Palette(defaults, parsePalette(paletteText)), source, paletteText, wallpaper };
+  return { palette: new Palette(defaults, parsePalette(paletteText)), source, paletteText, paletteEntry, wallpaper };
+}
+
+export async function exportTheme(palette: Palette, imported?: ImportedTheme): Promise<Blob> {
+  const text = strToU8(palette.toThemeText());
+  if (text.length > paletteLimit) {
+    throw new Error("Палитра превышает 1 МиБ.");
+  }
+  if (!imported?.paletteEntry) {
+    return new Blob([text], { type: "application/octet-stream" });
+  }
+
+  const original = new Uint8Array(await imported.source.arrayBuffer());
+  let expandedSize = 0;
+  const entries = unzipSync(original, {
+    filter(entry) {
+      expandedSize += Math.max(entry.originalSize, entry.size);
+      if (expandedSize > 32 * paletteLimit) {
+        throw new Error("Распакованный архив превышает 32 МиБ.");
+      }
+      return true;
+    },
+  });
+  entries[imported.paletteEntry] = text;
+  const result = zipSync(entries);
+  if (result.length > fileLimit) {
+    throw new Error("Архив темы превышает 5 МиБ.");
+  }
+  return new Blob([result], { type: "application/zip" });
 }
