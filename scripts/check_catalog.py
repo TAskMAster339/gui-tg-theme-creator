@@ -102,9 +102,9 @@ def check_catalog(directory, upstream):
             raise ValueError(f"{slot}: verification requires an implementation")
         progress[key]["mapped"] += 1
         progress[key]["implemented"] += implemented
-        # The current editor exposes controls through implemented preview bindings.
-        progress[key]["editable"] |= implemented and key in palette_keys
         progress[key]["verified"] += verified
+    for key in palette_keys:
+        progress[key]["editable"] = 1
     return palette, fields, progress, coverage
 
 

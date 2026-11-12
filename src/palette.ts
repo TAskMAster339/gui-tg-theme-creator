@@ -65,6 +65,21 @@ export class Palette {
     }
   }
 
+  declaration(key: string): string | undefined {
+    return this.fields.get(key) ?? this.defaults.get(key);
+  }
+
+  restoreColor(key: string, original: Palette): Palette {
+    const fields = new Map(this.fields);
+    const value = original.fields.get(key);
+    if (value === undefined) {
+      fields.delete(key);
+    } else {
+      fields.set(key, value);
+    }
+    return new Palette(this.defaults, fields);
+  }
+
   withColor(key: string, value: string): Palette {
     if (!this.defaults.has(key) || !hexColor.test(value)) {
       throw new Error("Введите цвет в формате #RRGGBB или #RRGGBBAA.");
@@ -119,7 +134,7 @@ export class Palette {
         throw new Error(`Циклическая ссылка: ${[...path, current].join(" → ")}.`);
       }
       path.add(current);
-      const value = this.fields.get(current) ?? this.defaults.get(current);
+      const value = this.declaration(current);
       if (!value || cloudFields.has(current)) {
         throw new Error(`Цвет «${key}» ссылается на неизвестный ключ «${current}».`);
       }

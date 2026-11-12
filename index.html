@@ -195,6 +195,20 @@
       </article>
       <details class="palette-catalog" id="palette-catalog">
         <summary>Каталог ключей</summary>
+        <section id="catalog-editor" class="catalog-editor" aria-labelledby="catalog-key" hidden>
+          <h3 id="catalog-key"></h3>
+          <p id="catalog-purpose"></p>
+          <dl>
+            <dt>Исходное значение</dt><dd id="catalog-original"></dd>
+            <dt>Текущее значение</dt><dd id="catalog-current"></dd>
+            <dt>Итоговый цвет</dt><dd id="catalog-resolved"></dd>
+          </dl>
+          <div class="catalog-edit-actions">
+            <div id="catalog-color"></div>
+            <button type="button" id="catalog-restore">Вернуть исходное</button>
+          </div>
+        </section>
+        <p id="no-catalog-keys" hidden>Подходящих ключей нет.</p>
         <dl id="catalog-keys"></dl>
       </details>
     </main>

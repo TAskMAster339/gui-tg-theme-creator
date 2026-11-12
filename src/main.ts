@@ -1,5 +1,6 @@
 import bindings from "../catalog/bindings.tsv?raw";
 import palette from "../catalog/palette.tsv?raw";
+import coverage from "../catalog/coverage.tsv?raw";
 import extraFields from "../catalog/fields.tsv?raw";
 import { Palette, readDefaults } from "./palette.ts";
 import { exportTheme, readTheme, type ImportedTheme } from "./theme.ts";
@@ -22,6 +23,11 @@ const catalogBindings = bindings.trimEnd().split("\n").slice(1).map((row) => {
   const [key, component, state, property, description, source, implementation] = row.split("\t");
   return { key, component, state, property, description, source, implementation };
 });
+const paletteComments = new Map(coverage.trimEnd().split("\n").slice(1).map((row) => {
+  const [key, , comment] = row.split("\t");
+  return [key, comment];
+}));
+
 function sourceUrl(source: string): string {
   const [path, line] = source.split(":");
   const libPrefix = "Telegram/lib_ui/";
@@ -73,9 +79,45 @@ function updatePreview() {
 }
 
 function applyColor(key: string, value: string) {
+  if (currentPalette.color(key) === value.toUpperCase()) {
+    return;
+  }
   currentPalette = currentPalette.withColor(key, value);
   getElement<HTMLButtonElement>("reset-theme").disabled = false;
   updatePreview();
+  updateCatalogEditor();
+}
+
+function createColorInputs(key: string, label: string) {
+  const picker = document.createElement("input");
+  picker.type = "color";
+  picker.setAttribute("aria-label", `Палитра — ${label}`);
+  const hex = document.createElement("input");
+  hex.type = "text";
+  hex.className = "hex-input";
+  hex.maxLength = 9;
+  hex.spellcheck = false;
+  hex.setAttribute("aria-label", `HEX — ${label}`);
+  picker.addEventListener("input", () => {
+    const alpha = currentPalette.color(key).slice(7);
+    applyColor(key, picker.value + alpha);
+  });
+  const commitHex = () => {
+    try {
+      applyColor(key, hex.value.trim());
+    } catch (error) {
+      hex.setCustomValidity(error instanceof Error ? error.message : "Некорректный цвет.");
+      hex.reportValidity();
+    }
+  };
+  hex.addEventListener("input", () => hex.setCustomValidity(""));
+  hex.addEventListener("change", commitHex);
+  hex.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      commitHex();
+    }
+  });
+  return { picker, hex };
 }
 
 function renderControls(example: typeof examples[number]) {
@@ -91,34 +133,7 @@ function renderControls(example: typeof examples[number]) {
     link.textContent = binding.key;
     link.target = "_blank";
     link.rel = "noopener";
-    const picker = document.createElement("input");
-    picker.type = "color";
-    picker.setAttribute("aria-label", `Палитра — ${binding.description}`);
-    const hex = document.createElement("input");
-    hex.type = "text";
-    hex.className = "hex-input";
-    hex.maxLength = 9;
-    hex.spellcheck = false;
-    hex.setAttribute("aria-label", `HEX — ${binding.description}`);
-    picker.addEventListener("input", () => {
-      const alpha = currentPalette.color(binding.key).slice(7);
-      applyColor(binding.key, picker.value + alpha);
-    });
-    const commitHex = () => {
-      try {
-        applyColor(binding.key, hex.value.trim());
-      } catch (error) {
-        hex.setCustomValidity(error instanceof Error ? error.message : "Некорректный цвет.");
-        hex.reportValidity();
-      }
-    };
-    hex.addEventListener("input", () => hex.setCustomValidity(""));
-    hex.addEventListener("change", commitHex);
-    hex.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        commitHex();
-      }
-    });
+    const { picker, hex } = createColorInputs(binding.key, binding.description);
     value.append(link, picker, hex);
     example.properties.append(label, value);
     example.controls.set(binding.property, { key: binding.key, label, value, picker, hex });
@@ -201,6 +216,7 @@ fileInput.addEventListener("change", async () => {
     activeTheme = await readTheme(file, defaults);
     currentPalette = activeTheme.palette;
     updatePreview();
+    updateCatalogEditor();
     showThemeFields();
     themeStatus.textContent = `Открыта тема «${file.name}».`;
   } catch (error) {
@@ -250,10 +266,58 @@ resetTheme.addEventListener("click", () => {
   themeStatus.textContent = "Используется базовая палитра Telegram Desktop.";
   updatePreview();
   showThemeFields();
+  updateCatalogEditor();
 });
 
 
 const paletteCatalog = getElement<HTMLDetailsElement>("palette-catalog");
+const catalogEditor = getElement("catalog-editor");
+const catalogColor = getElement("catalog-color");
+const catalogRestore = getElement<HTMLButtonElement>("catalog-restore");
+let catalogSelection: (ReturnType<typeof createColorInputs> & { key: string }) | undefined;
+
+function purpose(key: string): string {
+  const comment = paletteComments.get(key);
+  return catalogBindings.find((binding) => binding.key === key)?.description
+    ?? (comment === "-" ? "" : comment ?? "");
+}
+
+function updateCatalogEditor() {
+  if (!catalogSelection) {
+    return;
+  }
+  const { key, picker, hex } = catalogSelection;
+  const original = activeTheme?.palette ?? basePalette;
+  const color = currentPalette.color(key);
+  getElement("catalog-original").textContent = original.declaration(key) ?? "";
+  getElement("catalog-current").textContent = currentPalette.declaration(key) ?? "";
+  getElement("catalog-resolved").textContent = color;
+  picker.value = color.slice(0, 7);
+  hex.value = color;
+  hex.setCustomValidity("");
+  catalogRestore.disabled = original.fields.get(key) === currentPalette.fields.get(key);
+}
+
+function selectCatalogKey(key: string) {
+  catalogSelection = { key, ...createColorInputs(key, key) };
+  getElement("catalog-key").textContent = key;
+  getElement("catalog-purpose").textContent = purpose(key) || "Назначение ещё проверяется.";
+  catalogColor.replaceChildren(catalogSelection.picker, catalogSelection.hex);
+  catalogEditor.hidden = false;
+  updateCatalogEditor();
+  catalogSelection.hex.focus();
+  catalogSelection.hex.select();
+}
+
+catalogRestore.addEventListener("click", () => {
+  if (catalogSelection) {
+    currentPalette = currentPalette.restoreColor(catalogSelection.key, activeTheme?.palette ?? basePalette);
+    updatePreview();
+    updateCatalogEditor();
+    catalogSelection.hex.focus();
+  }
+});
+
 paletteCatalog.addEventListener("toggle", () => {
   const list = getElement("catalog-keys");
   if (!paletteCatalog.open || list.childElementCount) {
@@ -261,11 +325,16 @@ paletteCatalog.addEventListener("toggle", () => {
   }
   for (const key of defaults.keys()) {
     const term = document.createElement("dt");
-    term.textContent = key;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "catalog-key-button";
+    button.textContent = key;
+    button.addEventListener("click", () => selectCatalogKey(key));
+    term.append(button);
     const description = document.createElement("dd");
     const matches = catalogBindings.filter((binding) => binding.key === key);
     if (!matches.length) {
-      description.textContent = "Привязка пока не подтверждена";
+      description.textContent = purpose(key) || "Привязка пока не подтверждена";
     }
     for (const binding of matches) {
       const line = document.createElement("div");
@@ -306,11 +375,19 @@ function filterSearch() {
     }
   }
   getElement("no-components").hidden = visible !== 0;
+  let catalogMatches = 0;
   for (const term of document.querySelectorAll<HTMLElement>("#catalog-keys dt")) {
     const detail = term.nextElementSibling as HTMLElement;
     const text = `${term.textContent} ${detail.textContent}`.toLocaleLowerCase();
     term.hidden = detail.hidden = !text.includes(query);
+    catalogMatches += Number(!term.hidden);
   }
+  getElement("no-catalog-keys").hidden = catalogMatches > 0;
 }
 
-search.addEventListener("input", filterSearch);
+search.addEventListener("input", () => {
+  if (search.value.trim()) {
+    paletteCatalog.open = true;
+  }
+  filterSearch();
+});

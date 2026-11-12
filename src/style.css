@@ -209,3 +209,25 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .preview [data-property]:focus-visible { outline: 2px solid #507bb9; outline-offset: 3px; }
 #unread-dot, .comment-dot { position: relative; }
 #unread-dot::after, .comment-dot::after { content: ""; position: absolute; inset: -7px; }
+
+.catalog-editor {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.catalog-editor h3 { margin: 0 0 6px; color: inherit; }
+.catalog-editor p, #no-catalog-keys { color: var(--muted); font-size: .85rem; }
+#no-catalog-keys { margin-top: 12px; }
+.catalog-edit-actions, #catalog-color { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.catalog-edit-actions { margin-top: 12px; }
+.catalog-key-button, #catalog-restore {
+  color: inherit;
+  background: #202936;
+  border: 1px solid #3a485a;
+  border-radius: 6px;
+  padding: 3px 6px;
+  font: inherit;
+}
+.catalog-key-button { color: var(--accent); overflow-wrap: anywhere; text-align: left; }
+#catalog-restore:disabled { opacity: .5; }
