@@ -1,7 +1,32 @@
 key	component	state	property	description	source	implementation	verification
-dialogsUnreadBg	unread-dot	normal	background	Цвет точки непрочитанного в обычном чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:219	-	-
-dialogsUnreadBgOver	unread-dot	hover	background	Цвет точки непрочитанного при наведении на чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:218	-	-
-dialogsUnreadBgActive	unread-dot	active	background	Цвет точки непрочитанного в открытом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:216	-	-
-dialogsUnreadBgMuted	unread-dot	muted	background	Цвет точки непрочитанного в заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:214	-	-
-dialogsUnreadBgMutedOver	unread-dot	muted-hover	background	Цвет точки непрочитанного при наведении на заглушённый чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:213	-	-
-dialogsUnreadBgMutedActive	unread-dot	muted-active	background	Цвет точки непрочитанного в открытом заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:211	-	-
+dialogsUnreadBg	unread-dot	normal	background	Цвет точки непрочитанного в обычном чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:219	index.html	-
+dialogsUnreadBg	unread-badge	normal	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:26	index.html	-
+dialogsUnreadFg	unread-badge	normal	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:187	index.html	-
+dialogsUnreadBgOver	unread-dot	hover	background	Цвет точки непрочитанного при наведении на чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:218	index.html	-
+dialogsUnreadBgOver	unread-badge	hover	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:27	index.html	-
+dialogsUnreadFgOver	unread-badge	hover	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:186	index.html	-
+dialogsUnreadBgActive	unread-dot	active	background	Цвет точки непрочитанного в открытом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:216	index.html	-
+dialogsUnreadBgActive	unread-badge	active	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:28	index.html	-
+dialogsUnreadFgActive	unread-badge	active	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:184	index.html	-
+dialogsUnreadBgMuted	unread-dot	muted	background	Цвет точки непрочитанного в заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:214	index.html	-
+dialogsUnreadBgMuted	unread-badge	muted	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:29	index.html	-
+dialogsUnreadFg	unread-badge	muted	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:187	index.html	-
+dialogsUnreadBgMutedOver	unread-dot	muted-hover	background	Цвет точки непрочитанного при наведении на заглушённый чат	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:213	index.html	-
+dialogsUnreadBgMutedOver	unread-badge	muted-hover	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:30	index.html	-
+dialogsUnreadFgOver	unread-badge	muted-hover	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:186	index.html	-
+dialogsUnreadBgMutedActive	unread-dot	muted-active	background	Цвет точки непрочитанного в открытом заглушённом чате	Telegram/SourceFiles/dialogs/ui/dialogs_layout.cpp:211	index.html	-
+dialogsUnreadBgMutedActive	unread-badge	muted-active	background	Фон счётчика непрочитанных	Telegram/SourceFiles/ui/unread_badge_paint.cpp:31	index.html	-
+dialogsUnreadFgActive	unread-badge	muted-active	foreground	Цвет цифр счётчика	Telegram/SourceFiles/ui/unread_badge_paint.cpp:184	index.html	-
+msgInBg	reply	normal	background	Фон входящего сообщения	Telegram/SourceFiles/ui/chat/chat_style.cpp:255	index.html	-
+msgInReplyBarColor	reply	normal	stripe	Цвет полоски цитаты	Telegram/SourceFiles/window/themes/window_theme_preview.cpp:910	index.html	-
+msgInBg	comments	normal	background	Фон входящего поста	Telegram/SourceFiles/ui/chat/chat_style.cpp:255	index.html	-
+msgFileThumbLinkInFg	comments	normal	foreground	Цвет подписи комментариев	Telegram/SourceFiles/ui/chat/chat_style.cpp:279	index.html	-
+msgFileInBg	comments	normal	indicator	Цвет точки непрочитанных комментариев	Telegram/SourceFiles/ui/chat/chat_style.cpp:285	index.html	-
+windowBg	menu-action	normal	background	Фон пункта меню	Telegram/lib_ui/ui/widgets/widgets.style:960	index.html	-
+windowFg	menu-action	normal	foreground	Текст пункта меню	Telegram/lib_ui/ui/widgets/widgets.style:962	index.html	-
+toastBg	toast	normal	background	Фон всплывающего уведомления	Telegram/lib_ui/ui/toast/toast_widget.cpp:402	index.html	-
+toastFg	toast	normal	foreground	Текст уведомления	Telegram/lib_ui/ui/toast/toast_widget.cpp:47	index.html	-
+boxDividerBg	settings-divider	normal	background	Фон разделителя в настройках	Telegram/lib_ui/ui/widgets/widgets.style:679	index.html	-
+boxBg	profile-button	normal	background	Основа фона кнопки без цветной обложки, непрозрачность 84%	Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp:3977	index.html	-
+historyTextInFg	reply	normal	text	Текст входящего сообщения	Telegram/SourceFiles/ui/chat/chat_style.cpp:309	index.html	-
+historyTextInFg	comments	normal	text	Текст входящего сообщения	Telegram/SourceFiles/ui/chat/chat_style.cpp:309	index.html	-

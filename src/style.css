@@ -149,3 +149,62 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   margin-top: 8px;
   font: .8rem ui-monospace, monospace;
 }
+
+.component-example, .palette-catalog { margin-top: 22px; }
+.binding-properties { margin-top: 16px; }
+.binding-properties dt { font-size: .87rem; }
+.binding-properties dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0 14px;
+  font: .78rem ui-monospace, monospace;
+  overflow-wrap: anywhere;
+}
+.binding-properties a, .palette-catalog a { color: var(--accent); }
+.binding-swatch { width: 17px; height: 17px; border: 1px solid #ffffff50; border-radius: 4px; }
+.scene-row, .message-example, .menu-item, .settings-example, .profile-example {
+  width: min(100%, 300px);
+  border-radius: 10px;
+  background: #fff;
+  color: #1f2a38;
+}
+.scene-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 15px; }
+.badge {
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--example-background);
+  color: var(--example-foreground);
+  font-size: .82rem;
+}
+.message-example { padding: 12px; background: var(--example-background); color: var(--example-text); }
+.quote { border-left: 3px solid var(--example-stripe); padding-left: 10px; margin-bottom: 8px; }
+.comment-label { margin-top: 10px; color: var(--example-foreground); font-weight: 600; }
+.comment-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--example-indicator);
+}
+.menu-item, .toast-example { padding: 11px 15px; background: var(--example-background); color: var(--example-foreground); }
+.toast-example { border-radius: 9px; }
+.settings-example { overflow: hidden; }
+.settings-example p { padding: 11px 15px; }
+.settings-divider { height: 8px; background: var(--example-background); }
+.profile-example { padding: 16px; background: #e9f0f8; text-align: center; }
+.profile-action {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 10px auto 0;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: rgb(from var(--example-background) r g b / 84%);
+}
+.palette-catalog { border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.palette-catalog dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px; margin-top: 12px; }
+.palette-catalog dt, .palette-catalog dd { overflow-wrap: anywhere; font-size: .85rem; }
+.palette-catalog dt { font-family: ui-monospace, monospace; }

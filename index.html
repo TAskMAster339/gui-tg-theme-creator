@@ -83,6 +83,123 @@
           </section>
         </div>
       </article>
+      <article class="component-example" data-component="unread-badge" aria-labelledby="unread-badge-title">
+        <header class="component-header">
+          <p>Список чатов</p>
+          <h2 id="unread-badge-title">Счётчик непрочитанных</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <label for="badge-state">Состояние чата</label><select id="badge-state"></select>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="scene-row"><strong>Студия</strong><span class="badge">12</span></div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="reply" aria-labelledby="reply-title">
+        <header class="component-header">
+          <p>Переписка</p>
+          <h2 id="reply-title">Входящее сообщение с ответом</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="message-example"><div class="quote"><strong>Маша</strong><br>Когда будет встреча?</div><p>Завтра в 10:00.</p></div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="comments" aria-labelledby="comments-title">
+        <header class="component-header">
+          <p>Канал</p>
+          <h2 id="comments-title">Комментарии под постом</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="message-example"><p>Опубликовали программу встречи.</p><div class="comment-label">3 комментария <span class="comment-dot" role="img" aria-label="Есть непрочитанные"></span></div></div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="menu-action" aria-labelledby="menu-action-title">
+        <header class="component-header">
+          <p>Контекстное меню</p>
+          <h2 id="menu-action-title">Действие меню</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="menu-item">Копировать текст</div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="toast" aria-labelledby="toast-title">
+        <header class="component-header">
+          <p>Уведомления</p>
+          <h2 id="toast-title">Всплывающее уведомление</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="toast-example">Ссылка скопирована</div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="settings-divider" aria-labelledby="settings-divider-title">
+        <header class="component-header">
+          <p>Настройки</p>
+          <h2 id="settings-divider-title">Разделитель настроек</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="settings-example"><p>Основные настройки</p><div class="settings-divider"></div><p>Уведомления и звуки</p></div></div>
+          </section>
+        </div>
+      </article>
+      <article class="component-example" data-component="profile-button" aria-labelledby="profile-button-title">
+        <header class="component-header">
+          <p>Канал</p>
+          <h2 id="profile-button-title">Кнопка профиля канала</h2>
+        </header>
+        <div class="columns">
+          <section class="properties">
+            <h3>Свойства</h3>
+            <dl class="binding-properties"></dl>
+          </section>
+          <section class="preview">
+            <h3>Предпросмотр</h3>
+            <div class="preview-frame"><div class="profile-example"><strong>Студия</strong><span class="profile-action">Вступить</span></div></div>
+          </section>
+        </div>
+      </article>
+      <details class="palette-catalog" id="palette-catalog">
+        <summary>Каталог ключей</summary>
+        <dl id="catalog-keys"></dl>
+      </details>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
